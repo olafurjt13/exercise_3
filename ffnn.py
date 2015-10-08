@@ -1,7 +1,7 @@
 #!/usr/local/bin/python3
 #
-# This program calculates the output of a neural network
-# 
+# This program calculates the output of a two layer neural network
+# given the input pattern x, and weight matrices W1 and W2
 #
 # Author: Ólafur Jón Thoroddsen (olafurjt13@ru.is)
 
