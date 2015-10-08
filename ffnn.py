@@ -3,7 +3,7 @@
 # This program calculates the output of a two layer neural network
 # given the input pattern x, and weight matrices W1 and W2
 #
-# Author: Ólafur Jón Thoroddsen (olafurjt13@ru.is)
+# Author: Olafur Jon Thoroddsen (olafurjt13@ru.is)
 
 
 # ----- Begin Importing modules ----- #
@@ -41,7 +41,7 @@ def ffnn(x,W1,W2):
 
 	# Calculating the output layer inputs a2:
 	a2 = np.dot(W2,addOnes(z1))
-
+	
 	# Calculating the output of the network y:
 	y = sigmoid(a2)
 
