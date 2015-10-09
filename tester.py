@@ -5,6 +5,7 @@
 import numpy as np
 import sys
 from ffnn import ffnn
+from myBackprop import myBackprop
 
 # ----- End Importing modules ----- #
 
@@ -30,3 +31,8 @@ W2 = np.loadtxt(W2_input)
 y,z,a = ffnn(x,W1,W2)
 
 print("Network output: " + str(y) +'\n'+ "Hidden layer input: " + str(a) + '\n'+"Hidden layer output: " + str(z))
+print("This configuration has " + str(len(W2)-1) + " neurons in the hidden layer")
+
+t = 0.2*y	# Synthesizing the target value so that we get some error when running the script :)
+
+myBackprop(x,t,W1,W2)
