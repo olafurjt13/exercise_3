@@ -33,6 +33,9 @@ y,z,a = ffnn(x,W1,W2)
 print("Network output: " + str(y) +'\n'+ "Hidden layer input: " + str(a) + '\n'+"Hidden layer output: " + str(z))
 print("This configuration has " + str(len(W2)-1) + " neurons in the hidden layer")
 
-t = 0.2*y	# Synthesizing the target value so that we get some error when running the script :)
+t = 1	# Synthesizing the target value so that we get some error when running the script :)
 
-myBackprop(x,t,W1,W2)
+dEn_w1, dEn_w2, y = myBackprop(x,t,W1,W2)
+
+print("dEn_w1: " + str(dEn_w1))
+print("dEn_w2: " + str(dEn_w2))
