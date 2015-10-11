@@ -6,8 +6,17 @@ import numpy as np
 import sys
 from ffnn import ffnn
 from myBackprop import myBackprop
+from trainNN import trainNN
 
 # ----- End Importing modules ----- #
+
+
+def openData(Nx2_datafile):
+	array = ([item.strip('\n').split(' ') for item in Nx2_datafile])
+	for item in array:
+		item[0] = float(item[0])
+		item[1] = float(item[1])
+	return np.matrix(array)
 
 
 USAGE = """USAGE: tester.py "input pattern" "weight matrix 1" "weight matrix 2"
@@ -39,3 +48,19 @@ dEn_w1, dEn_w2, y = myBackprop(x,t,W1,W2)
 
 print("dEn_w1: " + str(dEn_w1))
 print("dEn_w2: " + str(dEn_w2))
+
+
+x1_data = open('x1_data.txt','r')
+x2_data = open('x2_data.txt','r')
+
+x1 = openData(x1_data)
+x2 = openData(x2_data)
+X = np.matrix(np.concatenate((x1,x2),axis=0))
+T = np.matrix(np.concatenate((np.ones(np.size(x1,axis=0)),np.zeros(np.size(x2,axis=0))),axis=0)).T
+W1i = np.matrix(np.random.rand(np.shape(np.matrix(W1))[0],np.shape(np.matrix(W1))[1]))
+W2i = np.matrix(np.random.rand(np.shape(np.matrix(W2))[0],np.shape(np.matrix(W2))[1]))
+
+
+Niter = 100
+eta = 0.01
+trainNN(X,T,W1i,W2i,Niter,eta)
