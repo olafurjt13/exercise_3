@@ -3,8 +3,6 @@
 # This program calculates the gradient of the cross-entropy
 # error function for a two layer nerual network given an 
 # input pattern x, target vector t and weight matrices W1 and W2
-# 
-# It is assumed that there is only one output variable y
 #
 # Author: Olafur Jon Thoroddsen
 
@@ -12,7 +10,6 @@
 # ----- Begin Importing modules ----- #
 
 import numpy as np
-import sys
 from ffnn import ffnn, sigmoid
 
 # ----- End Importing modules ----- #
@@ -42,6 +39,9 @@ def myBackprop(x,t,W1,W2):
 
 	# Computing network Deltas
 	deltaj = networkDeltas(deltak,a,W2)
+
+	print("delta_k: " + str(deltak))
+	print("delta_j: " + str(deltaj))
 
 	dEn_dw1 = deltaj.T * np.matrix(np.insert(x,0,1).T)
 	dEn_dw2 = np.matrix(deltak.T) * np.matrix(np.insert(z,0,1).T)
