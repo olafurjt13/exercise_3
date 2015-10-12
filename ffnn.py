@@ -22,18 +22,9 @@ def sigmoid(a):
 		for b in a:
 			tmp = np.insert(tmp,i,(1/(1+np.exp(-b))))
 			i += 1
-		#print("sigmoid on first try ------------------------------------")
 		return tmp
 	except ValueError:
-		#print("sigmoid on exception ------------------------------------")
 		return 1/(1+np.exp(-a))
-
-# def sigmoid(a):
-# 	try:
-# 		tmp = [1/(1 + np.exp(-b)) for b in a]
-# 		return np.array(tmp)
-# 	except TypeError:
-# 		return 1/(1+np.exp(-a))
 
 def addOnes(X):
 	try:
@@ -41,10 +32,9 @@ def addOnes(X):
 	except IndexError:
 		return np.insert(X,0,1)
 
-def ffnn(x,W1,W2):
+def ffnn(x,W1,W2):	
 	# Adding a row of ones to the input to simplify calculations:
 	x = addOnes(x)
-
 
 	# Calculating the hidden layer inputs a1:
 	a1 = np.dot(W1,x)
@@ -59,14 +49,7 @@ def ffnn(x,W1,W2):
 	# Calculating the output of the network y:
 	y = sigmoid(a2)
 
-	#print("ffnn x: " + str(np.shape(x)))
-	#print("ffnn a1: " + str(np.shape(a1)))
-	#print("ffnn z1: " + str(np.shape(z1)))
-	#print("ffnn a2: " + str(np.shape(a2)))
-	#print("ffnn y: " + str(np.shape(y)))
-
 	return [y,z1,a1]
-
 
 # ----- End Function Definitions ----- #
 
