@@ -8,7 +8,6 @@
 
 import numpy as np
 from myBackprop import myBackprop
-from ffnn import ffnn
 
 
 def trainNN(X,T,W1i,W2i,Niter,eta):
@@ -18,9 +17,15 @@ def trainNN(X,T,W1i,W2i,Niter,eta):
 	#print("trainNN trainData: " + str(np.shape(trainData)))
 	W1 = W1i
 	W2 = W2i
-	for data in trainData:
-		#print("trainNN data[0,0:2]: " + str(data[0,0:2]))
-		#print("trainNN data[0,2]: " + str(data[0,2]))
-		dEn_w1, dEn_w2, y = myBackprop(data[0,0:2].T,np.matrix(data[0,2]),W1,W2)
-		W1 = W1 - eta * dEn_w1
-		W2 = W2 - eta * dEn_w2
+	print("Orignal weight matrices: " + str(W1) + '\n' + str(W2))
+	for i in range(Niter):
+		for data in trainData:
+			#print("trainNN data[0,0:2]: " + str(data[0,0:2]))
+			#print("trainNN data[0,2]: " + str(data[0,2]))
+			dEn_w1, dEn_w2, y = myBackprop(data[0,0:2].T,np.matrix(data[0,2]),W1,W2)
+			W1 = W1 - eta * dEn_w1
+			W2 = W2 - eta * dEn_w2
+
+	print("Weight matrices after " + str(Niter) + " iterations of training: " + str(W1) + '\n' + str(W2))
+
+	return [W1, W2]

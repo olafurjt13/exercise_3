@@ -28,7 +28,7 @@ USAGE = """USAGE: tester.py "input pattern" "weight matrix 1" "weight matrix 2"
 
 
 if len(sys.argv) != 4:
-	print(USAGE)
+	#print(USAGE)
 	exit(1)
 
 script, x_input, W1_input, W2_input = sys.argv
@@ -39,15 +39,15 @@ W2 = np.loadtxt(W2_input)
 
 #y,z,a = ffnn(x,W1,W2)
 
-#print("Network output: " + str(y) +'\n'+ "Hidden layer input: " + str(a) + '\n'+"Hidden layer output: " + str(z))
-#print("This configuration has " + str(len(W2)-1) + " neurons in the hidden layer")
+##print("Network output: " + str(y) +'\n'+ "Hidden layer input: " + str(a) + '\n'+"Hidden layer output: " + str(z))
+##print("This configuration has " + str(len(W2)-1) + " neurons in the hidden layer")
 
 t = 1	# Synthesizing the target value so that we get some error when running the script :)
 
 #dEn_w1, dEn_w2, y = myBackprop(x,t,W1,W2)
 
-#print("dEn_w1: " + str(dEn_w1))
-#print("dEn_w2: " + str(dEn_w2))
+##print("dEn_w1: " + str(dEn_w1))
+##print("dEn_w2: " + str(dEn_w2))
 
 
 x1_data = open('x1_data.txt','r')
@@ -63,12 +63,12 @@ W2i = np.matrix(np.random.rand(np.shape(np.matrix(W2))[0],np.shape(np.matrix(W2)
 
 Niter = 100
 eta = 0.01
-print("X: " + str(np.shape(X)))
-print("T: " + str(np.shape(T)))
-print("W1i: " + str(np.shape(W1i)))
-print("W2i: " + str(np.shape(W2i)))
+#print("X: " + str(np.shape(X)))
+#print("T: " + str(np.shape(T)))
+#print("W1i: " + str(np.shape(W1i)))
+#print("W2i: " + str(np.shape(W2i)))
 
-trainNN(X,T,W1i,W2i,Niter,eta)
+W1, W2 = trainNN(X,T,W1i,W2i,Niter,eta)
 
 
 

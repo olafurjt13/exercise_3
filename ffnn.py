@@ -22,10 +22,10 @@ def sigmoid(a):
 		for b in a:
 			tmp = np.insert(tmp,i,(1/(1+np.exp(-b))))
 			i += 1
-		print("sigmoid on first try ------------------------------------")
+		#print("sigmoid on first try ------------------------------------")
 		return tmp
 	except ValueError:
-		print("sigmoid on exception ------------------------------------")
+		#print("sigmoid on exception ------------------------------------")
 		return 1/(1+np.exp(-a))
 
 # def sigmoid(a):
@@ -59,11 +59,11 @@ def ffnn(x,W1,W2):
 	# Calculating the output of the network y:
 	y = sigmoid(a2)
 
-	print("ffnn x: " + str(np.shape(x)))
-	print("ffnn a1: " + str(np.shape(a1)))
-	print("ffnn z1: " + str(np.shape(z1)))
-	print("ffnn a2: " + str(np.shape(a2)))
-	print("ffnn y: " + str(np.shape(y)))
+	#print("ffnn x: " + str(np.shape(x)))
+	#print("ffnn a1: " + str(np.shape(a1)))
+	#print("ffnn z1: " + str(np.shape(z1)))
+	#print("ffnn a2: " + str(np.shape(a2)))
+	#print("ffnn y: " + str(np.shape(y)))
 
 	return [y,z1,a1]
 
