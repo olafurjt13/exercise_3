@@ -1,7 +1,11 @@
 #!/usr/local/bin/python3
 
+from sys import argv
+
+script, inputfile = argv
+
 data = []
-with open('Training optimization data.txt') as Optimization_datafile:
+with open(inputfile) as Optimization_datafile:
 	file_lines = Optimization_datafile.readlines()[7:]
 	for lines in file_lines:
 		data.append(lines.strip('\n').split(' '))
@@ -18,3 +22,4 @@ with open('Training optimization data.txt') as Optimization_datafile:
 		i += 1
 
 	print("The optimal settings are:\n" + "Niter: " + str(data[optimal][0]) + "\n" + "eta: " + str(data[optimal][1]))
+	print("The sum of errors is: " + str(sum_of_errors))
